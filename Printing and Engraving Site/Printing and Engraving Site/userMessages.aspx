@@ -1,13 +1,13 @@
-﻿<%--<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="userMessages.aspx.cs" Inherits="Printing_and_Engraving_Site.userMessages" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="userMessages.aspx.cs" Inherits="Printing_and_Engraving_Site.userMessages" %>
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-<asp:PlaceHolder ID="successMessage" runat="server" EnableViewState="false">
+<asp:PlaceHolder ID="phSuccessMessage" runat="server" EnableViewState="false">
     <div ID="divSuccess" style="padding: 10px; margin: 5px; border-radius: 5px; color:#3c763d; background-color: #DFF2BF; font-size: 16px; z-index:1001;">
         <asp:Label ID="lblSuccessMessage" runat="server" EnableViewState="false"></asp:Label>
         <i class="fa fa-times" style="color:gray; cursor:pointer; float:right;" title="Close message" onclick="CloseSuccessMessage()"></i>
     </div>
 </asp:PlaceHolder>
-    <asp:PlaceHolder ID="errorMessage" runat="server" EnableViewState="false">
+    <asp:PlaceHolder ID="phErrorMessage" runat="server" EnableViewState="false">
     <div ID="divError" style="padding: 10px; margin: 5px; border-radius: 5px; color:#D8000C; background-color: ##FFBABA; font-size: 16px; z-index:1001;">
         <asp:Label ID="lblErrorMessage" runat="server" EnableViewState="false"></asp:Label>
         <i class="fa fa-times" style="color:gray; cursor:pointer; float:right;" title="Close message" onclick="CloseErrorMessage()"></i>
@@ -41,4 +41,4 @@
     {
         $("divSuccess").slideToggle();
     }
-</script>--%>
+</script>

@@ -1,7 +1,23 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="Printing_and_Engraving_Site.WebForm1" %>
+﻿<%--<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Admin.aspx.cs" Inherits="Printing_and_Engraving_Site.WebForm1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
-    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" ProviderName="<%$ ConnectionStrings:AdminConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Users]"></asp:SqlDataSource>
+    <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AdminConnectionString %>" ProviderName="<%$ ConnectionStrings:AdminConnectionString.ProviderName %>" SelectCommand="SELECT * FROM [Users]" DeleteCommand="DELETE FROM [Users] WHERE [PersonID] = ?" InsertCommand="INSERT INTO [Users] ([PersonID], [UserName], [UserPassword], [UserRoleID]) VALUES (?, ?, ?, ?)" UpdateCommand="UPDATE [Users] SET [UserName] = ?, [UserPassword] = ?, [UserRoleID] = ? WHERE [PersonID] = ?">
+        <DeleteParameters>
+            <asp:Parameter Name="PersonID" Type="Int32" />
+        </DeleteParameters>
+        <InsertParameters>
+            <asp:Parameter Name="PersonID" Type="Int32" />
+            <asp:Parameter Name="UserName" Type="String" />
+            <asp:Parameter Name="UserPassword" Type="String" />
+            <asp:Parameter Name="UserRoleID" Type="Int32" />
+        </InsertParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="UserName" Type="String" />
+            <asp:Parameter Name="UserPassword" Type="String" />
+            <asp:Parameter Name="UserRoleID" Type="Int32" />
+            <asp:Parameter Name="PersonID" Type="Int32" />
+        </UpdateParameters>
+    </asp:SqlDataSource>
     <br />
     Modify Users<br />
 <br />
@@ -17,4 +33,4 @@
     </asp:GridView>
 <br />
 
-</asp:Content>
+</asp:Content>--%>

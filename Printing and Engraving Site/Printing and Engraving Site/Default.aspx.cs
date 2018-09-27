@@ -11,11 +11,14 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRoleID"] != "Admin") //TODO: Set proper permissions
-            {
-                Response.Redirect("Login.aspx");
-            }
+            //if (Session["UserRoleID"] != "Admin") //TODO: Set proper permissions
+            //{
+            //    Response.Redirect("Login.aspx");
+            //}
 
+        //    userMessages user = new userMessages();
+
+        //    user.ShowErrorMessage("This site is currently under development.");
         }
     }
 }

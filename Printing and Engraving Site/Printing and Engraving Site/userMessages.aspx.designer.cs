@@ -13,13 +13,13 @@ namespace Printing_and_Engraving_Site {
     public partial class userMessages {
         
         /// <summary>
-        /// successMessage control.
+        /// phSuccessMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder successMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder phSuccessMessage;
         
         /// <summary>
         /// lblSuccessMessage control.
@@ -31,13 +31,13 @@ namespace Printing_and_Engraving_Site {
         protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
         
         /// <summary>
-        /// errorMessage control.
+        /// phErrorMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.PlaceHolder errorMessage;
+        protected global::System.Web.UI.WebControls.PlaceHolder phErrorMessage;
         
         /// <summary>
         /// lblErrorMessage control.
