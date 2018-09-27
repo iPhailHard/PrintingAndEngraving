@@ -11,6 +11,10 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["UserRoleID"] != "Admin") //TODO: Set proper permissions
+            {
+                Response.Redirect("Login.aspx");
+            }
 
         }
     }

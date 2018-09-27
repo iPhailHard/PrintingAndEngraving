@@ -7,15 +7,10 @@ using System.Web.UI.WebControls;
 
 namespace Printing_and_Engraving_Site
 {
-    public partial class Order : System.Web.UI.Page
+    public partial class userMessages : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Session["UserRoleID"] != "Admin")
-            {
-                Response.Redirect("Login.aspx");
-            }
-
 
         }
     }

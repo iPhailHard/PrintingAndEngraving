@@ -11,7 +11,15 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["UserRoleID"] != "Admin")
+            {
+                Response.Redirect("Login.aspx");
+            }
+           
+            if (!Page.IsPostBack)
+            {
+                
+            }
         }
     }
 }

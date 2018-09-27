@@ -140,11 +140,24 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="dsUsers.xsc">
+      <DependentUpon>dsUsers.xsd</DependentUpon>
+    </Content>
+    <Content Include="Admin.aspx" />
+    <None Include="dsUsers.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsUsers.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="dsUsers.xss">
+      <DependentUpon>dsUsers.xsd</DependentUpon>
+    </Content>
     <None Include="Properties\PublishProfiles\PrintingandEngraving - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="Order.aspx" />
+    <Content Include="PrintingAndEngraving.accdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -174,6 +187,7 @@
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
+    <Content Include="userMessages.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
@@ -203,6 +217,7 @@
     <Compile Include="Checkout.aspx.designer.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
+    <Compile Include="clsDataLayer.cs" />
     <Compile Include="Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -216,6 +231,11 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dsUsers.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsUsers.xsd</DependentUpon>
     </Compile>
     <Compile Include="Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
@@ -263,12 +283,26 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
+    <Compile Include="userMessages.aspx.cs">
+      <DependentUpon>userMessages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="userMessages.aspx.designer.cs">
+      <DependentUpon>userMessages.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
