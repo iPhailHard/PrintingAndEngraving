@@ -10,6 +10,6 @@
 namespace Printing_and_Engraving_Site {
     
     
-    public partial class Employee {
+    public partial class Checkout {
     }
 }
