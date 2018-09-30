@@ -17,12 +17,13 @@ namespace Printing_and_Engraving_Site
         public void ShowSuccessMessage(string message)
         {
             lblSuccessMessage.Text = message;
+            phSuccessMessage.Visible = true;
         }
 
         public void ShowErrorMessage(string message)
         {
-            
             lblErrorMessage.Text = message;
+            phErrorMessage.Visible = true;
         }
     }
 }

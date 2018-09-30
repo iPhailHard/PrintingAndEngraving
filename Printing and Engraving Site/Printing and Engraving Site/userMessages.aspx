@@ -1,4 +1,5 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="userMessages.aspx.cs" Inherits="Printing_and_Engraving_Site.userMessages" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="userMessages.aspx.cs" Inherits="Printing_and_Engraving_Site.userMessages" %>
+
 
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
 <asp:PlaceHolder ID="phSuccessMessage" runat="server" EnableViewState="false">
@@ -33,7 +34,7 @@
 
         }
         
-    };
+    }
     function CloseErrorMessage() {
         $("divError").slideToggle();
     };

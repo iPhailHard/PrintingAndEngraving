@@ -17,6 +17,11 @@ namespace Printing_and_Engraving_Site
 
         protected void lgnUserLogin_Authenticate(object sender, AuthenticateEventArgs e)
         {
+            if (true)
+            {
+                return; //TODO: Implement
+            }
+
             dsUsers UserLogin;
 
             string SecurityLevel;
@@ -28,6 +33,7 @@ namespace Printing_and_Engraving_Site
                 e.Authenticated = false;
                 return;
             }
+            
 
             SecurityLevel = UserLogin.Users[0].UserRoleID.ToString();
 
