@@ -122,18 +122,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="About.aspx" />
-    <Content Include="Catalog.aspx" />
-    <Content Include="Checkout.aspx" />
-    <Content Include="Contact.aspx" />
+    <Content Include="Main Site\About.aspx" />
+    <Content Include="Customer\Catalog.aspx" />
+    <Content Include="Customer\Checkout.aspx" />
+    <Content Include="Customer\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="CustomerCheckout.aspx" />
-    <Content Include="Default.aspx" />
-    <Content Include="Employee.aspx" />
+    <Content Include="Customer\CustomerCheckout.aspx" />
+    <Content Include="Main Site\Default.aspx" />
+    <Content Include="Employee\Employee.aspx" />
     <Content Include="favicon.ico" />
-    <Content Include="FinalCheckout.aspx" />
+    <Content Include="Customer\FinalCheckout.aspx" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -145,7 +145,7 @@
     <Content Include="dsUsers.xsc">
       <DependentUpon>dsUsers.xsd</DependentUpon>
     </Content>
-    <Content Include="Admin.aspx" />
+    <Content Include="Employee\Admin.aspx" />
     <None Include="dsUsers.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
@@ -156,9 +156,9 @@
     </Content>
     <None Include="Properties\PublishProfiles\PrintingandEngraving - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Home.aspx" />
-    <Content Include="Login.aspx" />
-    <Content Include="Order.aspx" />
+    <Content Include="Main Site\Home.aspx" />
+    <Content Include="Main Site\Login.aspx" />
+    <Content Include="Customer\Order.aspx" />
     <Content Include="PrintingAndEngraving.accdb" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -188,59 +188,59 @@
     <Content Include="Scripts\WebForms\WebForms.js" />
     <Content Include="Scripts\WebForms\WebParts.js" />
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
-    <Content Include="Services.aspx" />
-    <Content Include="Site.Master" />
-    <Content Include="ThankYouCheckout.aspx" />
-    <Content Include="userMessages.aspx" />
-    <Content Include="ViewSwitcher.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Customer\Services.aspx" />
+    <Content Include="Main Site\Site.Master" />
+    <Content Include="Customer\ThankYouCheckout.aspx" />
+    <Content Include="Main Site\userMessages.aspx" />
+    <Content Include="Main Site\ViewSwitcher.ascx" />
+    <Content Include="Main Site\Web.config" />
     <Content Include="Bundle.config" />
-    <Content Include="Site.Mobile.Master" />
+    <Content Include="Main Site\Site.Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="About.aspx.cs">
+    <Compile Include="Main Site\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="About.aspx.designer.cs">
+    <Compile Include="Main Site\About.aspx.designer.cs">
       <DependentUpon>About.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Catalog.aspx.cs">
+    <Compile Include="Customer\Catalog.aspx.cs">
       <DependentUpon>Catalog.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Catalog.aspx.designer.cs">
+    <Compile Include="Customer\Catalog.aspx.designer.cs">
       <DependentUpon>Catalog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Checkout.aspx.cs">
+    <Compile Include="Customer\Checkout.aspx.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Checkout.aspx.designer.cs">
+    <Compile Include="Customer\Checkout.aspx.designer.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
     <Compile Include="clsDataLayer.cs" />
-    <Compile Include="Contact.aspx.cs">
+    <Compile Include="Customer\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Contact.aspx.designer.cs">
+    <Compile Include="Customer\Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="CustomerCheckout.aspx.cs">
+    <Compile Include="Customer\CustomerCheckout.aspx.cs">
       <DependentUpon>CustomerCheckout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CustomerCheckout.aspx.designer.cs">
+    <Compile Include="Customer\CustomerCheckout.aspx.designer.cs">
       <DependentUpon>CustomerCheckout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Main Site\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Main Site\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="dsUsers.Designer.cs">
@@ -248,92 +248,92 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsUsers.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Employee.aspx.cs">
+    <Compile Include="Employee\Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Employee.aspx.designer.cs">
+    <Compile Include="Employee\Employee.aspx.designer.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FinalCheckout.aspx.cs">
+    <Compile Include="Customer\FinalCheckout.aspx.cs">
       <DependentUpon>FinalCheckout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="FinalCheckout.aspx.designer.cs">
+    <Compile Include="Customer\FinalCheckout.aspx.designer.cs">
       <DependentUpon>FinalCheckout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
+    <Compile Include="Main Site\Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
+    <Compile Include="Main Site\Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Login.aspx.cs">
+    <Compile Include="Main Site\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Login.aspx.designer.cs">
+    <Compile Include="Main Site\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Order.aspx.cs">
+    <Compile Include="Customer\Order.aspx.cs">
       <DependentUpon>Order.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Order.aspx.designer.cs">
+    <Compile Include="Customer\Order.aspx.designer.cs">
       <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services.aspx.cs">
+    <Compile Include="Customer\Services.aspx.cs">
       <DependentUpon>Services.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Services.aspx.designer.cs">
+    <Compile Include="Customer\Services.aspx.designer.cs">
       <DependentUpon>Services.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Master.cs">
+    <Compile Include="Main Site\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Master.designer.cs">
+    <Compile Include="Main Site\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="Site.Mobile.Master.cs">
+    <Compile Include="Main Site\Site.Mobile.Master.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Mobile.Master.designer.cs">
+    <Compile Include="Main Site\Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="ThankYouCheckout.aspx.cs">
+    <Compile Include="Customer\ThankYouCheckout.aspx.cs">
       <DependentUpon>ThankYouCheckout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ThankYouCheckout.aspx.designer.cs">
+    <Compile Include="Customer\ThankYouCheckout.aspx.designer.cs">
       <DependentUpon>ThankYouCheckout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="userMessages.aspx.cs">
+    <Compile Include="Main Site\userMessages.aspx.cs">
       <DependentUpon>userMessages.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="userMessages.aspx.designer.cs">
+    <Compile Include="Main Site\userMessages.aspx.designer.cs">
       <DependentUpon>userMessages.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ViewSwitcher.ascx.cs">
+    <Compile Include="Main Site\ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ViewSwitcher.ascx.designer.cs">
+    <Compile Include="Main Site\ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
     </Compile>
-    <Compile Include="Admin.aspx.cs">
+    <Compile Include="Employee\Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Admin.aspx.designer.cs">
+    <Compile Include="Employee\Admin.aspx.designer.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -343,10 +343,10 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Web.Debug.config">
+    <None Include="Main Site\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
-    <None Include="Web.Release.config">
+    <None Include="Main Site\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
