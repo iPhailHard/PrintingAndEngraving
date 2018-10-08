@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
@@ -15,6 +18,16 @@ namespace Printing_and_Engraving_Site
 
         }
 
+        #region database class
+
+        //public IQueryable<Employee> Employee_GetData()
+        //{
+        //    EmployeeDataModel emp = new EmployeeDataModel();
+        //    var query = emp.Employees.Include(s => s.)
+        //}
+
+        #endregion
+
         protected void lgnUserLogin_Authenticate(object sender, AuthenticateEventArgs e)
         {
             //if (true)
@@ -22,20 +35,57 @@ namespace Printing_and_Engraving_Site
             //    return; //TODO: Implement
             //}
 
-            dsUsers UserLogin;
+            SqlConnection conn = new SqlConnection("data source=printingandengraving.database.windows.net;initial catalog=PrintingAndEngraving;persist security info=True;user id=bjaune;password=ThisIsMyPassWord@AZURE1;");
+            // Create a command to extract the required data and assign it the connection string
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Employee", conn);
+            cmd.CommandType = CommandType.Text;
+            // Create a DataAdapter to run the command and fill the DataTable
+            SqlDataAdapter da = new SqlDataAdapter();
+            da.SelectCommand = cmd;
+            DataTable dt = new DataTable();
+            da.Fill(dt);
+            List<Employee> employees = new List<Employee>();
+            Employee employee = new Employee();
+
+            string user = lgnUserLogin.UserName.ToString();
+            string password = lgnUserLogin.Password.ToString();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                employees.Where(a => a.UserName == user && a.UserPassword == password)
+                        .Select(p => p.EmployeeID).ToList();
+            }
+
+
+
+            employee = employees.Where(a => a.UserName == user && a.UserPassword == password)
+                        .Select(p => p).FirstOrDefault();
+            
+
+            
+            
 
             string SecurityLevel;
 
-            UserLogin = clsDataLayer.GetUsers(Server.MapPath("~\\PrintingAndEngraving.accdb"), lgnUserLogin.UserName, lgnUserLogin.Password);
+            //UserLogin = clsDataLayer.GetUsers(Server.MapPath("~\\PrintingAndEngraving.accdb"), lgnUserLogin.UserName, lgnUserLogin.Password);
 
-            if (UserLogin.Users.Count < 1)
+
+            if (employees.Where(x => x.UserName == user).Count() < 1)
             {
                 e.Authenticated = false;
                 return;
             }
-            
+            else
+            {
+                if (string.IsNullOrEmpty(employees.Where(x => x.UserPassword == password).Select(y => y.UserPassword).SingleOrDefault()))
+                {
+                    e.Authenticated = false;
+                    return;
+                }
+                SecurityLevel = employees.Where(x => x.UserName == user && x.UserPassword == password).Select(s => s.UserRoleID).FirstOrDefault().ToString();
+            }
 
-            SecurityLevel = UserLogin.Users[0].UserRoleID.ToString();
+           
 
             switch (SecurityLevel)
             {
@@ -64,7 +114,7 @@ namespace Printing_and_Engraving_Site
                     break;
             }
 
-
+            
         }
     }
 }
