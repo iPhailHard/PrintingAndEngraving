@@ -12,7 +12,7 @@ namespace Printing_and_Engraving_Site
     using System;
     using System.Collections.Generic;
     
-    public partial class Employee
+    public partial class User
     {
         public int EmployeeID { get; set; }
         public string UserName { get; set; }

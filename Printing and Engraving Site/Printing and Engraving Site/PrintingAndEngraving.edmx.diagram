@@ -4,9 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="256843deea324d5bb46ca84074e683ba" Name="Diagram1">
-        <EntityTypeShape EntityType="PrintingAndEngravingModel.Employee" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+      <Diagram DiagramId="403fb3ec6c474bcba61727ddb9aa22d5" Name="Diagram1">
         <EntityTypeShape EntityType="PrintingAndEngravingModel.UserRole" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="PrintingAndEngravingModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>

@@ -5,7 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
       <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="Employee">
+        <EntityType Name="UserRoles">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="int" Nullable="false" />
+          <Property Name="PermissionType" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
@@ -14,31 +21,24 @@
           <Property Name="UserPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="UserRoleID" Type="int" />
         </EntityType>
-        <EntityType Name="UserRoles">
-          <Key>
-            <PropertyRef Name="UserRoleID" />
-          </Key>
-          <Property Name="UserRoleID" Type="int" Nullable="false" />
-          <Property Name="PermissionType" Type="varchar" MaxLength="50" Nullable="false" />
-        </EntityType>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
           <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserRoles">
               <PropertyRef Name="UserRoleID" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Users">
               <PropertyRef Name="UserRoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PrintingAndEngravingModelStoreContainer">
-          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="Self.FK__Employee__UserRo__4BAC3F29">
             <End Role="UserRoles" EntitySet="UserRoles" />
-            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -46,7 +46,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrintingAndEngravingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="Employee">
+        <EntityType Name="UserRole">
+          <Key>
+            <PropertyRef Name="UserRoleID" />
+          </Key>
+          <Property Name="UserRoleID" Type="Int32" Nullable="false" />
+          <Property Name="PermissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="UserRoles" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="User">
           <Key>
             <PropertyRef Name="EmployeeID" />
           </Key>
@@ -54,34 +62,26 @@
           <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="UserRoleID" Type="Int32" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="Employee" ToRole="UserRoles" />
-        </EntityType>
-        <EntityType Name="UserRole">
-          <Key>
-            <PropertyRef Name="UserRoleID" />
-          </Key>
-          <Property Name="UserRoleID" Type="Int32" Nullable="false" />
-          <Property Name="PermissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="UserRoles" ToRole="Employee" />
+          <NavigationProperty Name="UserRole" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="Users" ToRole="UserRoles" />
         </EntityType>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
           <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
-          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <End Role="Users" Type="Self.User" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="UserRoles">
               <PropertyRef Name="UserRoleID" />
             </Principal>
-            <Dependent Role="Employee">
+            <Dependent Role="Users">
               <PropertyRef Name="UserRoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PrintingAndEngravingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Employees" EntityType="Self.Employee" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="Self.User" />
           <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="Self.FK__Employee__UserRo__4BAC3F29">
             <End Role="UserRoles" EntitySet="UserRoles" />
-            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -90,21 +90,21 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="PrintingAndEngravingModelStoreContainer" CdmEntityContainer="PrintingAndEngravingEntities">
-          <EntitySetMapping Name="Employees">
-            <EntityTypeMapping TypeName="PrintingAndEngravingModel.Employee">
-              <MappingFragment StoreEntitySet="Employee">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
-                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="UserRoles">
             <EntityTypeMapping TypeName="PrintingAndEngravingModel.UserRole">
               <MappingFragment StoreEntitySet="UserRoles">
                 <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
                 <ScalarProperty Name="PermissionType" ColumnName="PermissionType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="PrintingAndEngravingModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

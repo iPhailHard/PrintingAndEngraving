@@ -17,13 +17,13 @@ namespace Printing_and_Engraving_Site
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public UserRole()
         {
-            this.Employees = new HashSet<Employee>();
+            this.Users = new HashSet<User>();
         }
     
         public int UserRoleID { get; set; }
         public string PermissionType { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

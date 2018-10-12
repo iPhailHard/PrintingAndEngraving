@@ -44,10 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Azure.KeyVault.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Azure.KeyVault.Core.1.0.0\lib\net40\Microsoft.Azure.KeyVault.Core.dll</HintPath>
@@ -172,40 +172,28 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="dsUsers.xsc">
-      <DependentUpon>dsUsers.xsd</DependentUpon>
-    </Content>
     <Content Include="Employee\Admin.aspx" />
-    <None Include="dsUsers.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>dsUsers.Designer.cs</LastGenOutput>
-    </None>
-    <Content Include="dsUsers.xss">
-      <DependentUpon>dsUsers.xsd</DependentUpon>
-    </Content>
-    <EntityDeploy Include="PrintingAndEngravingDBModel.edmx">
+    <EntityDeploy Include="PrintingAndEngraving.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>PrintingAndEngravingDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>PrintingAndEngraving.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="PrintingAndEngravingDBModel.edmx.diagram">
-      <DependentUpon>PrintingAndEngravingDBModel.edmx</DependentUpon>
+    <Content Include="PrintingAndEngraving.edmx.diagram">
+      <DependentUpon>PrintingAndEngraving.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\PrintingandEngraving - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Main Site\Home.aspx" />
     <Content Include="Main Site\Login.aspx" />
     <Content Include="Customer\Order.aspx" />
-    <Content Include="PrintingAndEngraving.accdb" />
-    <Content Include="PrintingAndEngravingDBModel.Context.tt">
+    <Content Include="PrintingAndEngraving.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>PrintingAndEngravingDBModel.Context.cs</LastGenOutput>
-      <DependentUpon>PrintingAndEngravingDBModel.edmx</DependentUpon>
+      <DependentUpon>PrintingAndEngraving.edmx</DependentUpon>
+      <LastGenOutput>PrintingAndEngraving.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="PrintingAndEngravingDBModel.tt">
+    <Content Include="PrintingAndEngraving.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>PrintingAndEngravingDBModel.edmx</DependentUpon>
-      <LastGenOutput>PrintingAndEngravingDBModel.cs</LastGenOutput>
+      <DependentUpon>PrintingAndEngraving.edmx</DependentUpon>
+      <LastGenOutput>PrintingAndEngraving.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -246,11 +234,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="EmployeeDataModel.cs" />
-    <Compile Include="Employee.cs">
-      <DependentUpon>PrintingAndEngravingDBModel.tt</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Main Site\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -273,7 +256,6 @@
     <Compile Include="Customer\Checkout.aspx.designer.cs">
       <DependentUpon>Checkout.aspx</DependentUpon>
     </Compile>
-    <Compile Include="clsDataLayer.cs" />
     <Compile Include="Customer\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -294,11 +276,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="dsUsers.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>dsUsers.xsd</DependentUpon>
     </Compile>
     <Compile Include="Employee\Employee.aspx.cs">
       <DependentUpon>Employee.aspx</DependentUpon>
@@ -338,20 +315,20 @@
     <Compile Include="Customer\Order.aspx.designer.cs">
       <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PrintingAndEngravingDBModel.Context.cs">
+    <Compile Include="PrintingAndEngraving.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrintingAndEngravingDBModel.Context.tt</DependentUpon>
+      <DependentUpon>PrintingAndEngraving.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="PrintingAndEngravingDBModel.cs">
+    <Compile Include="PrintingAndEngraving.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrintingAndEngravingDBModel.tt</DependentUpon>
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
     </Compile>
-    <Compile Include="PrintingAndEngravingDBModel.Designer.cs">
+    <Compile Include="PrintingAndEngraving.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>PrintingAndEngravingDBModel.edmx</DependentUpon>
+      <DependentUpon>PrintingAndEngraving.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Customer\Services.aspx.cs">
@@ -389,8 +366,12 @@
     <Compile Include="Main Site\userMessages.aspx.designer.cs">
       <DependentUpon>userMessages.aspx</DependentUpon>
     </Compile>
+    <Compile Include="User.cs">
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UserRepository.cs" />
     <Compile Include="UserRole.cs">
-      <DependentUpon>PrintingAndEngravingDBModel.tt</DependentUpon>
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -409,6 +390,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DataAccess\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
