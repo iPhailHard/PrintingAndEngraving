@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - Gigyax Printing and Engraving Corporation</title>
+    <title><%: Page.Title %> - Gygax Printing and Engraving Corporation</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -76,7 +76,7 @@
             </asp:ContentPlaceHolder>
             <hr />
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Gigyax Printing And Engraving Corporation</p>
+                <p>&copy; <%: DateTime.Now.Year %> - Gygax Printing And Engraving Corporation</p>
             </footer>
         </div>
 

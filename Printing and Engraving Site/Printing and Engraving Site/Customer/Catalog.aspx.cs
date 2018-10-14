@@ -11,11 +11,11 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if ((string)Session["UserRoleID"] != "Admin" || (string)Session["UserRoleID"] != "Customer"
-                || (string)Session["UserRoleID"] != "Supervisor" || (string)Session["UserRoleID"] != "Employee")
-            {
-                Response.Redirect("~/Main Site/Login.aspx");
-            }
+            //if ((string)Session["UserRoleID"] != "Admin" || (string)Session["UserRoleID"] != "Customer"
+            //    || (string)Session["UserRoleID"] != "Supervisor" || (string)Session["UserRoleID"] != "Employee")
+            //{
+            //    Response.Redirect("~/Main Site/Login.aspx");
+            //}
 
         }
     }
