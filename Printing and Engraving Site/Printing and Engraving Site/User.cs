@@ -14,7 +14,7 @@ namespace Printing_and_Engraving_Site
     
     public partial class User
     {
-        public int EmployeeID { get; set; }
+        public int UserID { get; set; }
         public string UserName { get; set; }
         public string UserPassword { get; set; }
         public Nullable<int> UserRoleID { get; set; }

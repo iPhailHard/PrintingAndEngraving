@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="403fb3ec6c474bcba61727ddb9aa22d5" Name="Diagram1">
         <EntityTypeShape EntityType="PrintingAndEngravingModel.UserRole" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="PrintingAndEngravingModel.User" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PrintingAndEngravingModel.User" Width="1.5" PointX="3" PointY="0.875" />
+        <AssociationConnector Association="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

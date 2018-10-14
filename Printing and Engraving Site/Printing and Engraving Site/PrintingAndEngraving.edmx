@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="UserRoles">
           <Key>
             <PropertyRef Name="UserRoleID" />
@@ -14,9 +14,9 @@
         </EntityType>
         <EntityType Name="Users">
           <Key>
-            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="EmployeeID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="UserPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="UserRoleID" Type="int" />
@@ -41,8 +41,7 @@
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="PrintingAndEngravingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -52,38 +51,38 @@
           </Key>
           <Property Name="UserRoleID" Type="Int32" Nullable="false" />
           <Property Name="PermissionType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="UserRoles" ToRole="Users" />
+          <NavigationProperty Name="Users" Relationship="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" FromRole="UserRole" ToRole="User" />
         </EntityType>
+        <EntityContainer Name="PrintingAndEngravingEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+          <EntitySet Name="Users" EntityType="PrintingAndEngravingModel.User" />
+          <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29">
+            <End Role="UserRole" EntitySet="UserRoles" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="User">
           <Key>
-            <PropertyRef Name="EmployeeID" />
+            <PropertyRef Name="UserID" />
           </Key>
-          <Property Name="EmployeeID" Type="Int32" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="UserPassword" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UserRoleID" Type="Int32" />
-          <NavigationProperty Name="UserRole" Relationship="Self.FK__Employee__UserRo__4BAC3F29" FromRole="Users" ToRole="UserRoles" />
+          <NavigationProperty Name="UserRole" Relationship="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" FromRole="User" ToRole="UserRole" />
         </EntityType>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
-          <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
-          <End Role="Users" Type="Self.User" Multiplicity="*" />
+          <End Type="PrintingAndEngravingModel.UserRole" Role="UserRole" Multiplicity="0..1" />
+          <End Type="PrintingAndEngravingModel.User" Role="User" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="UserRoles">
+            <Principal Role="UserRole">
               <PropertyRef Name="UserRoleID" />
             </Principal>
-            <Dependent Role="Users">
+            <Dependent Role="User">
               <PropertyRef Name="UserRoleID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrintingAndEngravingEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
-          <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="Self.FK__Employee__UserRo__4BAC3F29">
-            <End Role="UserRoles" EntitySet="UserRoles" />
-            <End Role="Users" EntitySet="Users" />
-          </AssociationSet>
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -101,10 +100,10 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="PrintingAndEngravingModel.User">
               <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
                 <ScalarProperty Name="UserRoleID" ColumnName="UserRoleID" />
+                <ScalarProperty Name="UserPassword" ColumnName="UserPassword" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
