@@ -3,22 +3,30 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
     <div id="mission statement">
-    <h3>Mission Statement</h3>
-        <p>"To offer the best services at agreeable prices. Every customer will be happy with their purchase."</p>
+    <h3>Our Mission</h3>
+        <p>We’ve made it our priority to offer you only the highest quality workmanship and in doing so 
+            embolden our community. We realize it is just as important to give back to the town and 
+            people that helped make us grow over 40 years ago. We hire only locals and make sure to foster a 
+            team environment that works hard and has fun while doing so. It is this family like environment 
+            (and hard work) that we believe brings you personalized awards and garments of only the highest caliber</p>
         <p>&nbsp;</p>
         </div>
     <div id="About Us">
-        <h3>About Us</h3>
-    <p>We started out as an engraving company in 1908, doing work on precious metals and fine &lt;insert information here&gt;</p>
-        <p>&nbsp;</p>
-        </div>
-        <div id="contact us">
-            <h3>Contact Us</h3>
-            <p>Any questions? Concerns? Comments?
-                <br /> Contact us today!
-            </p> 
-            <ul><li>Phone Number: (888) 555-1251</li>
-                <li>Email: <a href="testmail@test.com">testmail@test.com</a></li>
-               <li> Address: 800 West Sherman Way, Wallaby, OK 88888-9999</li> </ul>
+        <h3>About Our Company</h3>
+    <p>We are a family run business that has been operating since.Today we employ a large group of professionals 
+        and offer a number of quality products for your team or business ranging from quality screen printed 
+        team uniforms and trophies for your athletes, to embroidered company work shirts.</p>
+
+<p>In 1974, our father started this business with just a single printing screen in his garage in Lake Geneva, Wisconsin. 
+    He’d just left college and had was discovering his area of education might not be best suited for him. 
+    While working at a downtown burger joint, he and our mother invested in a screen printer to make a little extra 
+    money on the side for vacations and luxuries. In those days, he had no machines and managed to offer a quality product 
+    made with a full necessary hand tools and his hands themselves. In just a few years, word of the product fell on more 
+    and more ears and my father had no choice to begin investing in machinery to help run his already profitable business. 
+    A few years after that, our mother would quit her job to assist in running the operation. By 1983, they would open their 
+    first engraving and embroidery storefront in downtown Lake Geneva. By 1998 we moved to our large warehouse accommodations 
+    that you know today. We’ve been busy every since.
+</p>
+
     </div>
 </asp:Content>

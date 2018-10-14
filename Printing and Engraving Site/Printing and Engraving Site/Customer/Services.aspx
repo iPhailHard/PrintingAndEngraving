@@ -13,17 +13,23 @@
         <tr>
             <td>
             <div>
-                <p>
+                <h4><p>
                     Embroidery
-                </p>
+                </p></h4>
+                <p>We began with just a screen print, but as we moved to embroidery, 
+                    we became so good at it we had to put it in our name. 
+                    Look your best in our high quality shirts and hats for teams or businesses.</p>
             </div>
             </tr>
                 <tr>
             <td>
     <div>    
-    <p>
+    <h4>
+        <p>
             Engraving
-        </p>
+        </p></h4>
+        <p>While we only offer trophies and plaques, we’re certain we can engrave almost anything. 
+            If you don’t see it in our catalog, bring your item down and we’ll see what we can do!</p>
     </div>
                 </td>
             </tr>

@@ -234,6 +234,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Item.cs">
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+    </Compile>
     <Compile Include="Main Site\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -315,6 +318,10 @@
     <Compile Include="Customer\Order.aspx.designer.cs">
       <DependentUpon>Order.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Order.cs">
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="PrintingAndEngraving.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -369,7 +376,7 @@
     <Compile Include="User.cs">
       <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
     </Compile>
-    <Compile Include="UserRepository.cs" />
+    <Compile Include="DataRepository.cs" />
     <Compile Include="UserRole.cs">
       <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
     </Compile>

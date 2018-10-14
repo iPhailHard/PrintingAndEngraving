@@ -12,20 +12,21 @@ namespace Printing_and_Engraving_Site
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Item
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Item()
         {
             this.Orders = new HashSet<Order>();
         }
     
-        public int UserID { get; set; }
-        public string UserName { get; set; }
-        public string UserPassword { get; set; }
-        public Nullable<int> UserRoleID { get; set; }
+        public int ItemID { get; set; }
+        public long ItemCode { get; set; }
+        public string ItemName { get; set; }
+        public string ItemDescription { get; set; }
+        public byte[] ItemImage { get; set; }
+        public decimal ItemPrice { get; set; }
     
-        public virtual UserRole UserRole { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
     }

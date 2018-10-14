@@ -15,7 +15,7 @@ namespace Printing_and_Engraving_Site
         protected void lgnUserLogin_Authenticate(object sender, AuthenticateEventArgs e)
         {
 
-            UserRepository user = new UserRepository();
+            DataRepository user = new DataRepository();
 
             List<User> users = user.GetUsers();
 

@@ -5,6 +5,30 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Items">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ItemCode" Type="bigint" Nullable="false" />
+          <Property Name="ItemName" Type="varchar" MaxLength="100" />
+          <Property Name="ItemDescription" Type="varchar" MaxLength="500" />
+          <Property Name="ItemImage" Type="varbinary(max)" />
+          <Property Name="ItemPrice" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="IsPaid" Type="bit" />
+          <Property Name="IsCOD" Type="bit" />
+          <Property Name="OrderNote" Type="varchar" MaxLength="500" />
+          <Property Name="OrderDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="UserRoles">
           <Key>
             <PropertyRef Name="UserRoleID" />
@@ -33,12 +57,46 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__Orders__ItemID__Items_ItemID">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserID__Users_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PrintingAndEngravingModelStoreContainer">
+          <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="Self.FK__Employee__UserRo__4BAC3F29">
             <End Role="UserRoles" EntitySet="UserRoles" />
             <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__ItemID__Items_ItemID" Association="Self.FK__Orders__ItemID__Items_ItemID">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserID__Users_UserID" Association="Self.FK__Orders__UserID__Users_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -60,6 +118,16 @@
             <End Role="UserRole" EntitySet="UserRoles" />
             <End Role="User" EntitySet="Users" />
           </AssociationSet>
+          <EntitySet Name="Items" EntityType="PrintingAndEngravingModel.Item" />
+          <EntitySet Name="Orders" EntityType="PrintingAndEngravingModel.Order" />
+          <AssociationSet Name="FK__Orders__ItemID__Items_ItemID" Association="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserID__Users_UserID" Association="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -70,6 +138,7 @@
           <Property Name="UserPassword" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
           <Property Name="UserRoleID" Type="Int32" />
           <NavigationProperty Name="UserRole" Relationship="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" FromRole="User" ToRole="UserRole" />
+          <NavigationProperty Name="Orders" Relationship="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" FromRole="User" ToRole="Order" />
         </EntityType>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
           <End Type="PrintingAndEngravingModel.UserRole" Role="UserRole" Multiplicity="0..1" />
@@ -80,6 +149,57 @@
             </Principal>
             <Dependent Role="User">
               <PropertyRef Name="UserRoleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Item">
+          <Key>
+            <PropertyRef Name="ItemID" />
+          </Key>
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ItemCode" Type="Int64" Nullable="false" />
+          <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ItemImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="ItemPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <NavigationProperty Name="Orders" Relationship="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID" FromRole="Item" ToRole="Order" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="IsPaid" Type="Boolean" />
+          <Property Name="IsCOD" Type="Boolean" />
+          <Property Name="OrderNote" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Item" Relationship="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID" FromRole="Order" ToRole="Item" />
+          <NavigationProperty Name="User" Relationship="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Orders__ItemID__Items_ItemID">
+          <End Type="PrintingAndEngravingModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="PrintingAndEngravingModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserID__Users_UserID">
+          <End Type="PrintingAndEngravingModel.User" Role="User" Multiplicity="1" />
+          <End Type="PrintingAndEngravingModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -107,7 +227,33 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="Items">
+            <EntityTypeMapping TypeName="PrintingAndEngravingModel.Item">
+              <MappingFragment StoreEntitySet="Items">
+                <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
+                <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="ItemName" ColumnName="ItemName" />
+                <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PrintingAndEngravingModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="OrderNote" ColumnName="OrderNote" />
+                <ScalarProperty Name="IsCOD" ColumnName="IsCOD" />
+                <ScalarProperty Name="IsPaid" ColumnName="IsPaid" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

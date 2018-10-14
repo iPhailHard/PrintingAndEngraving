@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="PrintingAndEngravingModel.UserRole" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
         <EntityTypeShape EntityType="PrintingAndEngravingModel.User" Width="1.5" PointX="3" PointY="0.875" />
         <AssociationConnector Association="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" />
+        <EntityTypeShape EntityType="PrintingAndEngravingModel.Item" Width="1.5" PointX="3" PointY="5" />
+        <EntityTypeShape EntityType="PrintingAndEngravingModel.Order" Width="1.5" PointX="5.25" PointY="0.75" />
+        <AssociationConnector Association="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID" />
+        <AssociationConnector Association="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
