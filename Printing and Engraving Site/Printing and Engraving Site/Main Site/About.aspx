@@ -1,7 +1,40 @@
 ﻿<%@ Page Title="About" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="About.aspx.cs" Inherits="Printing_and_Engraving_Site.About" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%: Title %>.</h2>
+     <style>
+      
+         
+       h1{
+            color: silver;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size:85px;
+            font-weight:bold;
+            position:fixed;
+            top:18px;
+            left:700px;
+        }
+         
+         
+      h3{
+            color: silver;
+            font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size:24px;
+            font-weight:bold:
+       }
+
+     body{
+           background-color:#5768F7;
+       }
+
+       p{
+color: silver;
+            font-family:Papyrus;
+            font-size:24px;
+       }
+
+    </style>
+
+    <h1>About Us</h1>
     <div id="mission statement">
     <h3>Our Mission</h3>
         <p>We’ve made it our priority to offer you only the highest quality workmanship and in doing so 
