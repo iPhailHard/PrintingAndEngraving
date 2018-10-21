@@ -152,6 +152,35 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\Catalog\baseballTrophy.jpg" />
+    <Content Include="Images\Catalog\blackLongshirt.jpg" />
+    <Content Include="Images\Catalog\blackShirt.jpg" />
+    <Content Include="Images\Catalog\blueLongShirt.jpg" />
+    <Content Include="Images\Catalog\blueShirt.png" />
+    <Content Include="Images\Catalog\bowlingTrophy.jpg" />
+    <Content Include="Images\Catalog\brownLongShirt.jpg" />
+    <Content Include="Images\Catalog\brownShirt.jpg" />
+    <Content Include="Images\Catalog\footballTrophy.jpg" />
+    <Content Include="Images\Catalog\golfTrophy.jpg" />
+    <Content Include="Images\Catalog\greenLongShirt.jpg" />
+    <Content Include="Images\Catalog\greenShirt.jpg" />
+    <Content Include="Images\Catalog\greyLongShirt.jpg" />
+    <Content Include="Images\Catalog\greyShirt.png" />
+    <Content Include="Images\Catalog\hockeyTrophy.jpg" />
+    <Content Include="Images\Catalog\manTrophy.jpg" />
+    <Content Include="Images\Catalog\OrangeLongShirt.jpg" />
+    <Content Include="Images\Catalog\orangeShirt.jpg" />
+    <Content Include="Images\Catalog\plaque.jpg" />
+    <Content Include="Images\Catalog\purpleLongShirt.jpg" />
+    <Content Include="Images\Catalog\purpleShirt.jpg" />
+    <Content Include="Images\Catalog\redLongShirt.jpg" />
+    <Content Include="Images\Catalog\redShirt.jpg" />
+    <Content Include="Images\Catalog\soccerTrophy.jpg" />
+    <Content Include="Images\Catalog\whiteLongShirt.jpg" />
+    <Content Include="Images\Catalog\whiteShirt.jpg" />
+    <Content Include="Images\Catalog\womanTrophy.jpg" />
+    <Content Include="Images\Catalog\yellowLongShirt.jpg" />
+    <Content Include="Images\Catalog\yellowShirt.jpg" />
     <Content Include="Main Site\About.aspx" />
     <Content Include="Customer\Catalog.aspx" />
     <Content Include="Customer\Checkout.aspx" />
