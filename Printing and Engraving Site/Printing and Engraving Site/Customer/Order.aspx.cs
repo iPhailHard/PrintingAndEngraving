@@ -49,8 +49,12 @@ namespace Printing_and_Engraving_Site
             
 
             mvOrderDetails.SetActiveView(orderDetails);
-
             
+
+        }
+
+        protected static void ViewSwitchBack()
+        {
 
         }
 

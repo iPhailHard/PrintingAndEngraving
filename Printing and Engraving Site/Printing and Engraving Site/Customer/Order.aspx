@@ -75,35 +75,17 @@
         
             </HeaderTemplate>
             <ItemTemplate>
-                <%# (Container.ItemIndex + 1) % 1 == 0 ? "<tr>" : string.Empty %>
-                
+                <tr>
                     <td>
                         <asp:Label ID="lblItemName" runat="server" Text='<%# Eval("ItemName") %>'></asp:Label>
-                    </td>
-                    <td>
-                
-                    
                         <asp:Label ID="lblItemCode" runat="server" Text='<%# Eval("ItemCode") %>'></asp:Label>
-                    </td>
-                    <td>
-                    
-                
-                    
-                    
                         <asp:Label ID="lblItemDescription" runat="server" Text='<%# Eval("ItemDescription") %>'></asp:Label>
-                    
-                           </td>
-                    <td>     
-                    
-                    
                         <asp:Label ID="lblItemPrice" runat="server" Text='<%# Eval("ItemPrice") %>'></asp:Label>
-                    
-                             </td>
-                    <td>  
-                    
                                             <asp:ImageButton runat="server" ID="ibImage" alt="View Item" CommandName="orderDetails" CommandArgument='<%#Eval("ItemID") %>' ></asp:ImageButton>
                     </td>
-                <%# (Container.ItemIndex + 1) % 1 == 0 ? "<tr>" : string.Empty %>
+                    </tr>
+               <br runat="server" Visible="<%# (Container.ItemIndex % 1) == 0 %>" />
+
             </ItemTemplate>
         </asp:Repeater>
         </div>
