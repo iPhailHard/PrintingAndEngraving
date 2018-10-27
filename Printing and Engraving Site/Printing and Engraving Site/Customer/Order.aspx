@@ -92,6 +92,7 @@
             </asp:View>
                 <asp:View ID="orderDetails" runat="server">
                     <div>
+                        <asp:Button ID="buttonBack" runat="server" OnClick="buttonBack_Click" Text="Back to Items" />
                     <uc1:ucOrderDetails runat="server" ID="ucOrderDetails" />
                         </div>
                 </asp:View>

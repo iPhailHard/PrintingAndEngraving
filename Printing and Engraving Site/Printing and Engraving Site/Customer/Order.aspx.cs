@@ -53,10 +53,12 @@ namespace Printing_and_Engraving_Site
 
         }
 
-        protected static void ViewSwitchBack()
-        {
+        //public static void ViewSwitchBack()
+        //{
+        //    ImageButton button = repItemInformation.FindControl()
 
-        }
+        //    mvOrderDetails.SetActiveView(vwOrderItems);
+        //}
 
         private void LoadImages()
         {
@@ -81,6 +83,11 @@ namespace Printing_and_Engraving_Site
         protected void ibImage_Click(object sender, EventArgs e)
         {
             mvOrderDetails.SetActiveView(orderDetails);
+        }
+
+        protected void buttonBack_Click(object sender, EventArgs e)
+        {
+            mvOrderDetails.SetActiveView(vwOrderItems);
         }
     }
 }

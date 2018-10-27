@@ -1,6 +1,5 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucOrderDetails.ascx.cs" Inherits="Printing_and_Engraving_Site.Customer.UserControls.ucOrderDetails" %>
     <header>
-<asp:Button ID="backButton" runat="server" OnClientClick="JavaScript:window.history.back(1);return false;" Text="Back" />
 </header>
     
 <%--<asp:Image ID="itemImage" runat="server"  />--%>
