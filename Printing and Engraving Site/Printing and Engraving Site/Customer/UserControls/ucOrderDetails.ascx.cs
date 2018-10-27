@@ -39,7 +39,7 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
         public void BindItemDetailsToOrder(int ItemID)
         {
             _itemID = ItemID;
-            LoadImages();
+            //LoadImages();
             LoadItemDetails();
         }
 
@@ -72,9 +72,9 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
 
             if (item != null)
             {
-                //    lblItemDescription.Text = item.ItemDescription.ToString();
-                //    lblItemName.Text = item.ItemName.ToString();
-                //    lblItemPrice.Text = item.ItemPrice.ToString();
+                    lblItemDescription.Text = item.ItemDescription.ToString();
+                    lblItemName.Text = item.ItemName.ToString();
+                    lblItemPrice.Text = item.ItemPrice.ToString();
             }
             else
             {

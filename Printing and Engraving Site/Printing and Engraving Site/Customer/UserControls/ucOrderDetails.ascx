@@ -1,14 +1,14 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ucOrderDetails.ascx.cs" Inherits="Printing_and_Engraving_Site.Customer.UserControls.ucOrderDetails" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <header>
 
 </header>
     
-<asp:Image ID="itemImage" runat="server"  />
+<%--<asp:Image ID="itemImage" runat="server"  />--%>
 <table class="blueLegend">
     <thead>
     <tr>
         <td>Item</td>
+        <td></td>
         <td>Item Description</td>
         <td>Item Price</td>
     </tr>
@@ -23,4 +23,3 @@
     </tbody>
 </table>
     
-</asp:Content>

@@ -13,6 +13,33 @@ namespace Printing_and_Engraving_Site {
     public partial class Order {
         
         /// <summary>
+        /// updatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel;
+        
+        /// <summary>
+        /// mvOrderDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.MultiView mvOrderDetails;
+        
+        /// <summary>
+        /// vwOrderItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.View vwOrderItems;
+        
+        /// <summary>
         /// ItemName control.
         /// </summary>
         /// <remarks>
@@ -49,15 +76,6 @@ namespace Printing_and_Engraving_Site {
         protected global::System.Web.UI.WebControls.Label Label3;
         
         /// <summary>
-        /// ibImage control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ibImage;
-        
-        /// <summary>
         /// repItemInformation control.
         /// </summary>
         /// <remarks>
@@ -67,15 +85,6 @@ namespace Printing_and_Engraving_Site {
         protected global::System.Web.UI.WebControls.Repeater repItemInformation;
         
         /// <summary>
-        /// mvOrderDetails control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mvOrderDetails;
-        
-        /// <summary>
         /// orderDetails control.
         /// </summary>
         /// <remarks>
@@ -83,5 +92,14 @@ namespace Printing_and_Engraving_Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.View orderDetails;
+        
+        /// <summary>
+        /// ucOrderDetails control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Printing_and_Engraving_Site.Customer.UserControls.ucOrderDetails ucOrderDetails;
     }
 }
