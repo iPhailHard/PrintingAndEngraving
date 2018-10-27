@@ -152,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Customer\UserControls\ucOrderDetails.ascx" />
     <Content Include="Images\Catalog\baseballTrophy.jpg" />
     <Content Include="Images\Catalog\blackLongshirt.jpg" />
     <Content Include="Images\Catalog\blackShirt.jpg" />
@@ -181,6 +182,7 @@
     <Content Include="Images\Catalog\womanTrophy.jpg" />
     <Content Include="Images\Catalog\yellowLongShirt.jpg" />
     <Content Include="Images\Catalog\yellowShirt.jpg" />
+    <Content Include="LoadImages.aspx" />
     <Content Include="Main Site\About.aspx" />
     <Content Include="Customer\Catalog.aspx" />
     <Content Include="Customer\Checkout.aspx" />
@@ -263,8 +265,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Customer\UserControls\ucOrderDetails.ascx.cs">
+      <DependentUpon>ucOrderDetails.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\UserControls\ucOrderDetails.ascx.designer.cs">
+      <DependentUpon>ucOrderDetails.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="DataContracts\orderDetailsData.cs" />
+    <Compile Include="Image.cs">
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+    </Compile>
     <Compile Include="Item.cs">
       <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoadImages.aspx.cs">
+      <DependentUpon>LoadImages.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoadImages.aspx.designer.cs">
+      <DependentUpon>LoadImages.aspx</DependentUpon>
     </Compile>
     <Compile Include="Main Site\About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>

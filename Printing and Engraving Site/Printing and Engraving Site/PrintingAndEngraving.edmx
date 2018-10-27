@@ -5,6 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Images">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="int" Nullable="false" />
+          <Property Name="CatalogImage" Type="varbinary(max)" Nullable="false" />
+          <Property Name="ItemID" Type="int" Nullable="false" />
+          <Property Name="ImageName" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Items">
           <Key>
             <PropertyRef Name="ItemID" />
@@ -13,7 +22,6 @@
           <Property Name="ItemCode" Type="bigint" Nullable="false" />
           <Property Name="ItemName" Type="varchar" MaxLength="100" />
           <Property Name="ItemDescription" Type="varchar" MaxLength="500" />
-          <Property Name="ItemImage" Type="varbinary(max)" />
           <Property Name="ItemPrice" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="Orders">
@@ -81,7 +89,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Images_Items1">
+          <End Role="Items" Type="Self.Items" Multiplicity="1" />
+          <End Role="Images" Type="Self.Images" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Items">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Images">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="PrintingAndEngravingModelStoreContainer">
+          <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
@@ -97,6 +118,10 @@
           <AssociationSet Name="FK__Orders__UserID__Users_UserID" Association="Self.FK__Orders__UserID__Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Images_Items1" Association="Self.FK_Images_Items1">
+            <End Role="Items" EntitySet="Items" />
+            <End Role="Images" EntitySet="Images" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -127,6 +152,11 @@
           <AssociationSet Name="FK__Orders__UserID__Users_UserID" Association="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID">
             <End Role="User" EntitySet="Users" />
             <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="Images" EntityType="PrintingAndEngravingModel.Image" />
+          <AssociationSet Name="FK_Images_Items1" Association="PrintingAndEngravingModel.FK_Images_Items1">
+            <End Role="Item" EntitySet="Items" />
+            <End Role="Image" EntitySet="Images" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
@@ -160,9 +190,9 @@
           <Property Name="ItemCode" Type="Int64" Nullable="false" />
           <Property Name="ItemName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="ItemImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="ItemPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
           <NavigationProperty Name="Orders" Relationship="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID" FromRole="Item" ToRole="Order" />
+          <NavigationProperty Name="Images" Relationship="PrintingAndEngravingModel.FK_Images_Items1" FromRole="Item" ToRole="Image" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -203,6 +233,28 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Image">
+          <Key>
+            <PropertyRef Name="ImageID" />
+          </Key>
+          <Property Name="ImageID" Type="Int32" Nullable="false" />
+          <Property Name="CatalogImage" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ItemID" Type="Int32" Nullable="false" />
+          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Item" Relationship="PrintingAndEngravingModel.FK_Images_Items1" FromRole="Image" ToRole="Item" />
+        </EntityType>
+        <Association Name="FK_Images_Items1">
+          <End Type="PrintingAndEngravingModel.Item" Role="Item" Multiplicity="1" />
+          <End Type="PrintingAndEngravingModel.Image" Role="Image" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Item">
+              <PropertyRef Name="ItemID" />
+            </Principal>
+            <Dependent Role="Image">
+              <PropertyRef Name="ItemID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -231,7 +283,6 @@
             <EntityTypeMapping TypeName="PrintingAndEngravingModel.Item">
               <MappingFragment StoreEntitySet="Items">
                 <ScalarProperty Name="ItemPrice" ColumnName="ItemPrice" />
-                <ScalarProperty Name="ItemImage" ColumnName="ItemImage" />
                 <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
                 <ScalarProperty Name="ItemName" ColumnName="ItemName" />
                 <ScalarProperty Name="ItemCode" ColumnName="ItemCode" />
@@ -250,6 +301,16 @@
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Images">
+            <EntityTypeMapping TypeName="PrintingAndEngravingModel.Image">
+              <MappingFragment StoreEntitySet="Images">
+                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="CatalogImage" ColumnName="CatalogImage" />
+                <ScalarProperty Name="ImageID" ColumnName="ImageID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

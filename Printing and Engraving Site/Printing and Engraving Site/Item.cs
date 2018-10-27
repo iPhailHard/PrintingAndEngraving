@@ -18,16 +18,18 @@ namespace Printing_and_Engraving_Site
         public Item()
         {
             this.Orders = new HashSet<Order>();
+            this.Images = new HashSet<Image>();
         }
     
         public int ItemID { get; set; }
         public long ItemCode { get; set; }
         public string ItemName { get; set; }
         public string ItemDescription { get; set; }
-        public byte[] ItemImage { get; set; }
         public decimal ItemPrice { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Image> Images { get; set; }
     }
 }

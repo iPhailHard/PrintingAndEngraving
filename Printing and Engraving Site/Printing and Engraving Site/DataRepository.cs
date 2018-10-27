@@ -36,5 +36,22 @@ namespace Printing_and_Engraving_Site
                 return 0;
             }
         }
+
+        public List<Item> GetItems()
+        {
+            return (from Items in _Context.Items
+                    join Images in _Context.Images
+                    on Items.ItemID equals Images.ItemID
+                    select Items).ToList();
+        }
+
+        public Image GetImageByItemID(int ItemID)
+        {
+            Image image = _Context.Images.Where(q => q.ItemID == ItemID)
+                                            .Select(q => q)
+                                            .SingleOrDefault();
+
+            return image;
+        }
     }
 }

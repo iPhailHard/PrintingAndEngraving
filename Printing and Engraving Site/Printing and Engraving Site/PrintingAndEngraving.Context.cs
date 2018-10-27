@@ -29,5 +29,6 @@ namespace Printing_and_Engraving_Site
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Item> Items { get; set; }
         public virtual DbSet<Order> Orders { get; set; }
+        public virtual DbSet<Image> Images { get; set; }
     }
 }

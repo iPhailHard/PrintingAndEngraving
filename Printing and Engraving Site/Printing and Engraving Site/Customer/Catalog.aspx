@@ -12,9 +12,14 @@
                 <asp:BoundField DataField="ItemDescription" HeaderText="Item Description" SortExpression="ItemDescription" />
                 <asp:BoundField DataField="ItemName" HeaderText="Item Name" SortExpression="ItemName" />
                 <asp:BoundField DataField="ItemPrice" HeaderText="Item Price" SortExpression="ItemPrice" />
+                <asp:TemplateField>
+                    <ItemTemplate>
+                <asp:LinkButton runat ="server" ID="lbDetails" PostBackUrl="~/Customer/OrderDetails.aspx">Details</asp:LinkButton>
+                    </ItemTemplate>
+                        </asp:TemplateField>
             </Columns>
         </asp:GridView>
-        <asp:SqlDataSource ID="ItemsCatalog" runat="server" ConnectionString="Data Source=printingandengraving.database.windows.net;Initial Catalog=PrintingAndEngraving;User ID=bjaune;Password=ThisIsMyPassWord@AZURE1;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ItemCode], [ItemDescription], [ItemName], [ItemImage], [ItemPrice] FROM [Items] ORDER BY [ItemCode], [ItemName]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="ItemsCatalog" runat="server" ConnectionString="Data Source=printingandengraving.database.windows.net;Initial Catalog=PrintingAndEngraving;User ID=bjaune;Password=ThisIsMyPassWord@AZURE1;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ItemCode], [ItemDescription], [ItemName], [CatalogImage], [ItemPrice] FROM [Items] Join [Images] on [Items].ItemID = [Images].ItemID ORDER BY [ItemCode], [ItemName]"></asp:SqlDataSource>
     </p> <hr />
 
     <br /><br /><p>Find something you like? Don't forget to <a href="Order.aspx">Order</a> it!</p>
