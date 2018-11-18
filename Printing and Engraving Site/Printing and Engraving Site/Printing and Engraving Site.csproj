@@ -152,6 +152,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Customer\UserControls\ucOrderConfirmation.ascx" />
     <Content Include="Customer\UserControls\ucOrderDetails.ascx" />
     <Content Include="Images\Catalog\baseballTrophy.jpg" />
     <Content Include="Images\Catalog\blackLongshirt.jpg" />
@@ -265,6 +266,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Customer\UserControls\ucOrderConfirmation.ascx.cs">
+      <DependentUpon>ucOrderConfirmation.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer\UserControls\ucOrderConfirmation.ascx.designer.cs">
+      <DependentUpon>ucOrderConfirmation.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Customer\UserControls\ucOrderDetails.ascx.cs">
       <DependentUpon>ucOrderDetails.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

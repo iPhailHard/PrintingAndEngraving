@@ -1,16 +1,18 @@
 ﻿<%@ Page Title="Order" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Order.aspx.cs" Inherits="Printing_and_Engraving_Site.Order" %>
 
 <%@ Register Src="~/Customer/UserControls/ucOrderDetails.ascx" TagPrefix="uc1" TagName="ucOrderDetails" %>
+<%@ Register Src="~/Customer/UserControls/ucOrderConfirmation.ascx" TagPrefix="uc1" TagName="ucOrderConfirmation" %>
+
 
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <style>
         body{
-            background-color:#5768F7;
+            background-color:lightslategray;
         }
         
         h2{
-            color: silver;
+            color: darkblue;
             font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
             font-size:85px;
             font-weight:bold;
@@ -29,10 +31,10 @@
     <asp:UpdatePanel ID="updatePanel" runat="server">
         <ContentTemplate>
     <asp:Multiview runat="server" ID="mvOrderDetails">
-        <asp:View runat="server" ID="vwOrderItems">
-    <div>
+        <asp:View runat="server" ID="vwOrderItems" >
+    <div style="color:darkblue;">
     
-        <table>
+        <table style="color:darkblue">
             <tr>
                 <td>
                     <asp:Label runat="server" ID="ItemName">Item</asp:Label>
@@ -75,7 +77,7 @@
         
             </HeaderTemplate>
             <ItemTemplate>
-                <tr>
+                <tr style="color:darkblue">
                     <td>
                         <asp:Label ID="lblItemName" runat="server" Text='<%# Eval("ItemName") %>'></asp:Label>
                         <asp:Label ID="lblItemCode" runat="server" Text='<%# Eval("ItemCode") %>'></asp:Label>
@@ -91,11 +93,17 @@
         </div>
             </asp:View>
                 <asp:View ID="orderDetails" runat="server">
-                    <div>
+                    <div style="color: darkblue;">
                         <asp:Button ID="buttonBack" runat="server" OnClick="buttonBack_Click" Text="Back to Items" />
                     <uc1:ucOrderDetails runat="server" ID="ucOrderDetails" />
+                <asp:Button ID="btnAddItemToOrder" runat="server" Text="Add Item to Order" OnClick="btnAddItemToOrder_Click"/>
                         </div>
                 </asp:View>
+        <asp:View ID="vwOrderConfirmation" runat="server" >
+            <div style="color:darkblue;">
+            <uc1:ucOrderConfirmation runat="server" id="ucOrderConfirmation" />
+        </div>
+       </asp:View>
         </asp:MultiView>
             </ContentTemplate>
         </asp:UpdatePanel>

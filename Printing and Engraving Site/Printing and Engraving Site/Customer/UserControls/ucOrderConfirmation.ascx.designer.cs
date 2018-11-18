@@ -7,135 +7,126 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Printing_and_Engraving_Site {
+namespace Printing_and_Engraving_Site.Customer.UserControls {
     
     
-    public partial class Order {
+    public partial class ucOrderConfirmation {
         
         /// <summary>
-        /// updatePanel control.
+        /// lblItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updatePanel;
+        protected global::System.Web.UI.WebControls.Label lblItemName;
         
         /// <summary>
-        /// mvOrderDetails control.
+        /// txtItemName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView mvOrderDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtItemName;
         
         /// <summary>
-        /// vwOrderItems control.
+        /// lblItemCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View vwOrderItems;
+        protected global::System.Web.UI.WebControls.Label lblItemCode;
         
         /// <summary>
-        /// ItemName control.
+        /// txtItemCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label ItemName;
+        protected global::System.Web.UI.WebControls.TextBox txtItemCode;
         
         /// <summary>
-        /// Label1 control.
+        /// lblItemPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label lblItemPrice;
         
         /// <summary>
-        /// Label2 control.
+        /// txtItemPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.WebControls.TextBox txtItemPrice;
         
         /// <summary>
-        /// Label3 control.
+        /// lblItemQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label lblItemQuantity;
         
         /// <summary>
-        /// repItemInformation control.
+        /// txtItemQuantity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repItemInformation;
+        protected global::System.Web.UI.WebControls.TextBox txtItemQuantity;
         
         /// <summary>
-        /// orderDetails control.
+        /// lblTotalPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View orderDetails;
+        protected global::System.Web.UI.WebControls.Label lblTotalPrice;
         
         /// <summary>
-        /// buttonBack control.
+        /// txtItemTotal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button buttonBack;
+        protected global::System.Web.UI.WebControls.TextBox txtItemTotal;
         
         /// <summary>
-        /// ucOrderDetails control.
+        /// txtCustomEngravingMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Printing_and_Engraving_Site.Customer.UserControls.ucOrderDetails ucOrderDetails;
+        protected global::System.Web.UI.WebControls.TextBox txtCustomEngravingMessage;
         
         /// <summary>
-        /// btnAddItemToOrder control.
+        /// btnContinueShopping control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddItemToOrder;
+        protected global::System.Web.UI.WebControls.Button btnContinueShopping;
         
         /// <summary>
-        /// vwOrderConfirmation control.
+        /// btnPlaceOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View vwOrderConfirmation;
-        
-        /// <summary>
-        /// ucOrderConfirmation control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Printing_and_Engraving_Site.Customer.UserControls.ucOrderConfirmation ucOrderConfirmation;
+        protected global::System.Web.UI.WebControls.Button btnPlaceOrder;
     }
 }

@@ -89,5 +89,11 @@ namespace Printing_and_Engraving_Site
         {
             mvOrderDetails.SetActiveView(vwOrderItems);
         }
+
+        protected void btnAddItemToOrder_Click(object sender, EventArgs e)
+        {
+            mvOrderDetails.SetActiveView(vwOrderConfirmation);
+            ucOrderConfirmation.BindItemToConfirmation(_itemID);
+        }
     }
 }
