@@ -27,7 +27,13 @@
     </style>
     
     <h2>Orders</h2>
-    
+    <br />
+    <div id="divSuccessMessage">
+        <asp:Label runat="server" ID="lblSuccessMessage" style="color:lawngreen; background-color:black;" Text=""></asp:Label>
+    </div>
+    <div id="divErrorMessage">
+        <asp:Label runat="server" ID="lblErrorMessage" style="color:red; background-color:black;" Text=""></asp:Label>
+    </div>
     <asp:UpdatePanel ID="updatePanel" runat="server">
         <ContentTemplate>
     <asp:Multiview runat="server" ID="mvOrderDetails">
@@ -94,14 +100,32 @@
             </asp:View>
                 <asp:View ID="orderDetails" runat="server">
                     <div style="color: darkblue;">
+                        <p style="font-size:large; font-weight:700; align-content:center">Item Details</p>
+                        <br />
+                        <br />
                         <asp:Button ID="buttonBack" runat="server" OnClick="buttonBack_Click" Text="Back to Items" />
+                        <br />
+                        <br />
                     <uc1:ucOrderDetails runat="server" ID="ucOrderDetails" />
                 <asp:Button ID="btnAddItemToOrder" runat="server" Text="Add Item to Order" OnClick="btnAddItemToOrder_Click"/>
                         </div>
                 </asp:View>
         <asp:View ID="vwOrderConfirmation" runat="server" >
             <div style="color:darkblue;">
+                        <p style="font-size:large; font-weight:700; align-content:center">Confirm Order</p>
+                <br />
+                <br />
+                <asp:Button ID="btnCancelOrder" runat="server" OnClick="buttonBack_Click" Text="Cancel Order and Return" />
+                <br />
+                <br />
             <uc1:ucOrderConfirmation runat="server" id="ucOrderConfirmation" />
+                <br />
+                <br />
+                <div>
+    <asp:Button runat="server" ID="btnContinueShopping" onclick="btnContinueShopping_Click" Text="Confirm Order and Continue Shopping"/>
+
+    <asp:Button runat="server" ID="btnPlaceOrder" onclick="btnPlaceOrder_Click" Text="Confirm Order and Check Out"/>
+</div>
         </div>
        </asp:View>
         </asp:MultiView>

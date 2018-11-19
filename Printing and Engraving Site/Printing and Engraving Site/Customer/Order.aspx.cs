@@ -95,5 +95,25 @@ namespace Printing_and_Engraving_Site
             mvOrderDetails.SetActiveView(vwOrderConfirmation);
             ucOrderConfirmation.BindItemToConfirmation(_itemID);
         }
+
+        public void ShowSuccessMessage(string message)
+        {
+            lblSuccessMessage.Text = message;
+        }
+
+        public void ShowErrorMessage(string message)
+        {
+            lblErrorMessage.Text = message;
+        }
+
+        protected void btnContinueShopping_Click(object sender, EventArgs e)
+        {
+            ShowErrorMessage("This has not been implemented yet, please try again later.");
+        }
+
+        protected void btnPlaceOrder_Click(object sender, EventArgs e)
+        {
+            ShowSuccessMessage("This would be displayed whenever a successful order was placed.");
+        }
     }
 }

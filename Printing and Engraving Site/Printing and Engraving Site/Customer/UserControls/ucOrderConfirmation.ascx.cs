@@ -40,15 +40,5 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
             txtItemQuantity.Text = "1";
             txtItemTotal.Text = Convert.ToString(item.ItemPrice * itemQuantity);
         }
-
-        protected void btnContinueShopping_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        protected void btnPlaceOrder_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

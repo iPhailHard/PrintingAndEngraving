@@ -13,6 +13,24 @@ namespace Printing_and_Engraving_Site {
     public partial class Order {
         
         /// <summary>
+        /// lblSuccessMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
+        
+        /// <summary>
+        /// lblErrorMessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
+        
+        /// <summary>
         /// updatePanel control.
         /// </summary>
         /// <remarks>
@@ -130,6 +148,15 @@ namespace Printing_and_Engraving_Site {
         protected global::System.Web.UI.WebControls.View vwOrderConfirmation;
         
         /// <summary>
+        /// btnCancelOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCancelOrder;
+        
+        /// <summary>
         /// ucOrderConfirmation control.
         /// </summary>
         /// <remarks>
@@ -137,5 +164,23 @@ namespace Printing_and_Engraving_Site {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Printing_and_Engraving_Site.Customer.UserControls.ucOrderConfirmation ucOrderConfirmation;
+        
+        /// <summary>
+        /// btnContinueShopping control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnContinueShopping;
+        
+        /// <summary>
+        /// btnPlaceOrder control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnPlaceOrder;
     }
 }

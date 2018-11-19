@@ -21,8 +21,3 @@
 </div>
 <br />
 <br />
-<div>
-    <asp:Button runat="server" ID="btnContinueShopping" onclick="btnContinueShopping_Click" Text="Confirm Order and Continue Shopping"/>
-
-    <asp:Button runat="server" ID="btnPlaceOrder" onclick="btnPlaceOrder_Click" Text="Confirm Order and Check Out"/>
-</div>

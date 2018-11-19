@@ -13,15 +13,5 @@ namespace Printing_and_Engraving_Site
         {
 
         }
-
-        //public static void ShowSuccessMessage(string message)
-        //{
-        //    lblSuccessMessage.Text = message;
-        //}
-
-        //public static void ShowErrorMessage(string message)
-        //{
-        //    lblErrorMessage.Text = message;
-        //}
     }
 }

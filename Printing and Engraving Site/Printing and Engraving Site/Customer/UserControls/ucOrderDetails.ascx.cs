@@ -72,9 +72,10 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
 
             if (item != null)
             {
-                    lblItemDescription.Text = item.ItemDescription.ToString();
-                    lblItemName.Text = item.ItemName.ToString();
-                    lblItemPrice.Text = item.ItemPrice.ToString();
+                lblItemDescription.Text = item.ItemDescription.ToString();
+                lblItemCode.Text = item.ItemCode.ToString();
+                lblItemName.Text = item.ItemName.ToString();
+                lblItemPrice.Text = item.ItemPrice.ToString();
             }
             else
             {
@@ -84,7 +85,7 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
 
         protected void backButton_Click(object sender, EventArgs e)
         {
-            
+
         }
     }
 }

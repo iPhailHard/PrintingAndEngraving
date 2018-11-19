@@ -68,13 +68,7 @@
                         <li><a runat="server" href="~/Employee/Employee.aspx">Employee</a></li>
                     </ul>
                 </div>
-                <div id="divSuccessMessage">
-                    <asp:Label runat="server" ID="lblSuccessMessage" style="color:lawngreen; background-color:black;"></asp:Label>
-                </div>
-                <div id="divErrorMessage">
-                    <asp:Label runat="server" ID="lblErrorMessage" style="color:red; background-color:black;"></asp:Label>
-                </div>
-            </div>
+              </div>
         </div>
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
