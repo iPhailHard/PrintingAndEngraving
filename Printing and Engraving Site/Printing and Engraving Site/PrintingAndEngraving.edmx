@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="PrintingAndEngravingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Checkout">
+          <Key>
+            <PropertyRef Name="CheckOutID" />
+          </Key>
+          <Property Name="CheckOutID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="DateCompleted" Type="datetime" />
+          <Property Name="CardHolderZip" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolderState" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolderCity" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolderAddress2" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolderAddress1" Type="varchar" MaxLength="50" />
+          <Property Name="CardNumber" Type="varchar" MaxLength="50" />
+          <Property Name="CardHolderName" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Images">
           <Key>
             <PropertyRef Name="ImageID" />
@@ -36,6 +53,9 @@
           <Property Name="IsCOD" Type="bit" />
           <Property Name="OrderNote" Type="varchar" MaxLength="500" />
           <Property Name="OrderDate" Type="datetime" />
+          <Property Name="CustomEngravingMessage" Type="varchar" MaxLength="500" />
+          <Property Name="ItemQuantity" Type="int" />
+          <Property Name="IsOrderComplete" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UserRoles">
           <Key>
@@ -53,6 +73,30 @@
           <Property Name="UserPassword" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="UserRoleID" Type="int" />
         </EntityType>
+        <Association Name="FK__Checkout__OrderI__03F0984C">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="1" />
+          <End Role="Checkout" Type="Self.Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checkout__UserID__02FC7413">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Checkout" Type="Self.Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
           <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
           <End Role="Users" Type="Self.Users" Multiplicity="*" />
@@ -102,11 +146,20 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="PrintingAndEngravingModelStoreContainer">
+          <EntitySet Name="Checkout" EntityType="Self.Checkout" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Images" EntityType="Self.Images" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Items" EntityType="Self.Items" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Checkout__OrderI__03F0984C" Association="Self.FK__Checkout__OrderI__03F0984C">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checkout__UserID__02FC7413" Association="Self.FK__Checkout__UserID__02FC7413">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Checkout" EntitySet="Checkout" />
+          </AssociationSet>
           <AssociationSet Name="FK__Employee__UserRo__4BAC3F29" Association="Self.FK__Employee__UserRo__4BAC3F29">
             <End Role="UserRoles" EntitySet="UserRoles" />
             <End Role="Users" EntitySet="Users" />
@@ -158,6 +211,15 @@
             <End Role="Item" EntitySet="Items" />
             <End Role="Image" EntitySet="Images" />
           </AssociationSet>
+          <EntitySet Name="Checkouts" EntityType="PrintingAndEngravingModel.Checkout" />
+          <AssociationSet Name="FK__Checkout__OrderI__03F0984C" Association="PrintingAndEngravingModel.FK__Checkout__OrderI__03F0984C">
+            <End Role="Order" EntitySet="Orders" />
+            <End Role="Checkout" EntitySet="Checkouts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Checkout__UserID__02FC7413" Association="PrintingAndEngravingModel.FK__Checkout__UserID__02FC7413">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Checkout" EntitySet="Checkouts" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="User">
           <Key>
@@ -169,6 +231,7 @@
           <Property Name="UserRoleID" Type="Int32" />
           <NavigationProperty Name="UserRole" Relationship="PrintingAndEngravingModel.FK__Employee__UserRo__4BAC3F29" FromRole="User" ToRole="UserRole" />
           <NavigationProperty Name="Orders" Relationship="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="Checkouts" Relationship="PrintingAndEngravingModel.FK__Checkout__UserID__02FC7413" FromRole="User" ToRole="Checkout" />
         </EntityType>
         <Association Name="FK__Employee__UserRo__4BAC3F29">
           <End Type="PrintingAndEngravingModel.UserRole" Role="UserRole" Multiplicity="0..1" />
@@ -208,6 +271,10 @@
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
           <NavigationProperty Name="Item" Relationship="PrintingAndEngravingModel.FK__Orders__ItemID__Items_ItemID" FromRole="Order" ToRole="Item" />
           <NavigationProperty Name="User" Relationship="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" FromRole="Order" ToRole="User" />
+          <Property Name="CustomEngravingMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="ItemQuantity" Type="Int32" />
+          <NavigationProperty Name="Checkouts" Relationship="PrintingAndEngravingModel.FK__Checkout__OrderI__03F0984C" FromRole="Order" ToRole="Checkout" />
+          <Property Name="IsOrderComplete" Type="Boolean" Nullable="false" />
         </EntityType>
         <Association Name="FK__Orders__ItemID__Items_ItemID">
           <End Type="PrintingAndEngravingModel.Item" Role="Item" Multiplicity="1" />
@@ -255,6 +322,49 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="Checkout">
+          <Key>
+            <PropertyRef Name="CheckOutID" />
+          </Key>
+          <Property Name="CheckOutID" Type="Int32" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="TotalPrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DateCompleted" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Order" Relationship="PrintingAndEngravingModel.FK__Checkout__OrderI__03F0984C" FromRole="Checkout" ToRole="Order" />
+          <NavigationProperty Name="User" Relationship="PrintingAndEngravingModel.FK__Checkout__UserID__02FC7413" FromRole="Checkout" ToRole="User" />
+          <Property Name="CardHolderZip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolderState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolderCity" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolderAddress2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolderAddress1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CardHolderName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Checkout__OrderI__03F0984C">
+          <End Type="PrintingAndEngravingModel.Order" Role="Order" Multiplicity="1" />
+          <End Type="PrintingAndEngravingModel.Checkout" Role="Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Order">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Checkout__UserID__02FC7413">
+          <End Type="PrintingAndEngravingModel.User" Role="User" Multiplicity="1" />
+          <End Type="PrintingAndEngravingModel.Checkout" Role="Checkout" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Checkout">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -293,6 +403,9 @@
           <EntitySetMapping Name="Orders">
             <EntityTypeMapping TypeName="PrintingAndEngravingModel.Order">
               <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="IsOrderComplete" ColumnName="IsOrderComplete" />
+                <ScalarProperty Name="ItemQuantity" ColumnName="ItemQuantity" />
+                <ScalarProperty Name="CustomEngravingMessage" ColumnName="CustomEngravingMessage" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="OrderNote" ColumnName="OrderNote" />
                 <ScalarProperty Name="IsCOD" ColumnName="IsCOD" />
@@ -311,6 +424,24 @@
                 <ScalarProperty Name="ItemID" ColumnName="ItemID" />
                 <ScalarProperty Name="CatalogImage" ColumnName="CatalogImage" />
                 <ScalarProperty Name="ImageID" ColumnName="ImageID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Checkouts">
+            <EntityTypeMapping TypeName="PrintingAndEngravingModel.Checkout">
+              <MappingFragment StoreEntitySet="Checkout">
+                <ScalarProperty Name="CardHolderName" ColumnName="CardHolderName" />
+                <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+                <ScalarProperty Name="CardHolderAddress1" ColumnName="CardHolderAddress1" />
+                <ScalarProperty Name="CardHolderAddress2" ColumnName="CardHolderAddress2" />
+                <ScalarProperty Name="CardHolderCity" ColumnName="CardHolderCity" />
+                <ScalarProperty Name="CardHolderState" ColumnName="CardHolderState" />
+                <ScalarProperty Name="CardHolderZip" ColumnName="CardHolderZip" />
+                <ScalarProperty Name="DateCompleted" ColumnName="DateCompleted" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CheckOutID" ColumnName="CheckOutID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

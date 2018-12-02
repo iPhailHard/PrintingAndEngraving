@@ -14,6 +14,9 @@
         <AssociationConnector Association="PrintingAndEngravingModel.FK__Orders__UserID__Users_UserID" />
         <EntityTypeShape EntityType="PrintingAndEngravingModel.Image" Width="1.5" PointX="5.25" PointY="5.25" />
         <AssociationConnector Association="PrintingAndEngravingModel.FK_Images_Items1" />
+        <EntityTypeShape EntityType="PrintingAndEngravingModel.Checkout" Width="1.5" PointX="7.375" PointY="0.75" />
+        <AssociationConnector Association="PrintingAndEngravingModel.FK__Checkout__OrderI__03F0984C" />
+        <AssociationConnector Association="PrintingAndEngravingModel.FK__Checkout__UserID__02FC7413" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

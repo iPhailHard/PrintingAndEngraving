@@ -40,9 +40,9 @@
         <asp:View runat="server" ID="vwOrderItems" >
     <div style="color:darkblue;">
     
-        <table style="color:darkblue">
+        <table style="border: 1px solid black; color:darkblue">
             <tr>
-                <td>
+                <td >
                     <asp:Label runat="server" ID="ItemName">Item</asp:Label>
                 </td>
                                 <td>
@@ -83,12 +83,12 @@
         
             </HeaderTemplate>
             <ItemTemplate>
-                <tr style="color:darkblue">
-                    <td>
-                        <asp:Label ID="lblItemName" runat="server" Text='<%# Eval("ItemName") %>'></asp:Label>
-                        <asp:Label ID="lblItemCode" runat="server" Text='<%# Eval("ItemCode") %>'></asp:Label>
-                        <asp:Label ID="lblItemDescription" runat="server" Text='<%# Eval("ItemDescription") %>'></asp:Label>
-                        <asp:Label ID="lblItemPrice" runat="server" Text='<%# Eval("ItemPrice") %>'></asp:Label>
+                <tr >
+                    <td style="border: 1px solid black;">
+                        <asp:Label ID="lblItemName" runat="server" Text='<%# Eval("ItemName")  %>' style="color:darkblue"></asp:Label>
+                        <asp:Label ID="lblItemCode" runat="server" Text='<%# Eval("ItemCode") %>' style="color:darkblue"></asp:Label>
+                        <asp:Label ID="lblItemDescription" runat="server" Text='<%# Eval("ItemDescription") %>' style="color:darkblue"></asp:Label>
+                        <asp:Label ID="lblItemPrice" runat="server" Text='<%# Eval("ItemPrice") %>' style="color:darkblue"></asp:Label>
                                             <asp:ImageButton runat="server" ID="ibImage" alt="View Item" CommandName="orderDetails" CommandArgument='<%#Eval("ItemID") %>' ></asp:ImageButton>
                     </td>
                     </tr>

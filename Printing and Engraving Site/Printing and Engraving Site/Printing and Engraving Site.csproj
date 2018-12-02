@@ -186,7 +186,7 @@
     <Content Include="LoadImages.aspx" />
     <Content Include="Main Site\About.aspx" />
     <Content Include="Customer\Catalog.aspx" />
-    <Content Include="Customer\Checkout.aspx" />
+    <Content Include="Customer\frmCheckout.aspx" />
     <Content Include="Customer\Contact.aspx" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -266,6 +266,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Checkout.cs">
+      <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
+    </Compile>
     <Compile Include="Customer\UserControls\ucOrderConfirmation.ascx.cs">
       <DependentUpon>ucOrderConfirmation.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -309,12 +312,12 @@
     <Compile Include="Customer\Catalog.aspx.designer.cs">
       <DependentUpon>Catalog.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Customer\Checkout.aspx.cs">
-      <DependentUpon>Checkout.aspx</DependentUpon>
+    <Compile Include="Customer\frmCheckout.aspx.cs">
+      <DependentUpon>frmCheckout.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Customer\Checkout.aspx.designer.cs">
-      <DependentUpon>Checkout.aspx</DependentUpon>
+    <Compile Include="Customer\frmCheckout.aspx.designer.cs">
+      <DependentUpon>frmCheckout.aspx</DependentUpon>
     </Compile>
     <Compile Include="Customer\Contact.aspx.cs">
       <DependentUpon>Contact.aspx</DependentUpon>

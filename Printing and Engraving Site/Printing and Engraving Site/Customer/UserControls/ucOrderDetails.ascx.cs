@@ -33,7 +33,11 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            //if (GetUserRoleID() != "Admin" || GetUserRoleID() != "Supervisor"
+            //    || GetUserRoleID() != "Customer" || GetUserRoleID() != "Employee")
+            //{
+            //    Response.Redirect("~/Main Site/Login.aspx");
+            //}
         }
 
         public void BindItemDetailsToOrder(int ItemID)
@@ -86,6 +90,20 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
         protected void backButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private int GetUserID()
+        {
+            int userID = Login._UserID;
+
+            return userID;
+        }
+
+        private string GetUserRoleID()
+        {
+            string userRoleID = Login._UserRoleID;
+
+            return userRoleID;
         }
     }
 }

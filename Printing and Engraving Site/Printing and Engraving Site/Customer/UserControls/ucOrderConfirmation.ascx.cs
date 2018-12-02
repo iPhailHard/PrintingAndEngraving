@@ -11,6 +11,11 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+    //        if (GetUserRoleID() != "Admin" || GetUserRoleID() != "Supervisor"
+    //|| GetUserRoleID() != "Customer" || GetUserRoleID() != "Employee")
+    //        {
+    //            Response.Redirect("~/Main Site/Login.aspx");
+    //        }
 
         }
 
@@ -39,6 +44,20 @@ namespace Printing_and_Engraving_Site.Customer.UserControls
             txtItemPrice.Text = item.ItemPrice.ToString();
             txtItemQuantity.Text = "1";
             txtItemTotal.Text = Convert.ToString(item.ItemPrice * itemQuantity);
+        }
+
+        private int GetUserID()
+        {
+            int userID = Login._UserID;
+
+            return userID;
+        }
+
+        private string GetUserRoleID()
+        {
+            string userRoleID = Login._UserRoleID;
+
+            return userRoleID;
         }
     }
 }

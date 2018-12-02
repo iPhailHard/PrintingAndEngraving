@@ -11,7 +11,7 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["UserRoleID"] != "Admin")
+            //if (Session["UserRoleID"] != "Admin" || Session["UserRoleID"] != || Session["UserRoleID"] != || Session["UserRoleID"] != "Employee")
             //{
             //    Response.Redirect("Login.aspx");
             //}
@@ -20,6 +20,20 @@ namespace Printing_and_Engraving_Site
             {
                 
             }
+        }
+
+        private int GetUserID()
+        {
+           int userID = Login._UserID;
+
+            return userID;
+        }
+
+        private string GetUserRoleID()
+        {
+            string userRoleID = Login._UserRoleID;
+
+            return userRoleID;
         }
     }
 }

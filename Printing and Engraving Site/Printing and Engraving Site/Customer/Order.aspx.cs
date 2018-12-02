@@ -12,10 +12,18 @@ namespace Printing_and_Engraving_Site
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            //if (Session["UserRoleID"] != "Admin")
+            //if (GetUserRoleID() != "Admin" || GetUserRoleID() != "Supervisor"
+            //    || GetUserRoleID() != "Customer" || GetUserRoleID() != "Employee")
             //{
-            //    Response.Redirect("Login.aspx");
+            //    Response.Redirect("~/Main Site/Login.aspx");
             //}
+
+            //if ((string)Session["UserRoleID"] != "Admin" || (string)Session["UserRoleID"] != "Supervisor"
+            //    || (string)Session["UserRoleID"] != "Customer" || (string)Session["UserRoleID"] != "Employee")
+            //{
+            //    Response.Redirect("~/Main Site/Login.aspx");
+            //}
+
             if (!Page.IsPostBack)
             {
                 BindItemInformation();
@@ -24,7 +32,7 @@ namespace Printing_and_Engraving_Site
         }
 
         public static DataRepository repo = new DataRepository();
-
+        //public static int _userID = (int)(Session["UserID"]);
         public static int _itemID { get; set; }
 
         private void BindItemInformation()
@@ -108,12 +116,30 @@ namespace Printing_and_Engraving_Site
 
         protected void btnContinueShopping_Click(object sender, EventArgs e)
         {
-            ShowErrorMessage("This has not been implemented yet, please try again later.");
+            Order order = new Order();
+
+            order.
+
+            Response.Redirect("~/Order.aspx");
         }
 
         protected void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            ShowSuccessMessage("This would be displayed whenever a successful order was placed.");
+
+        }
+
+        private int GetUserID()
+        {
+            int userID = Login._UserID;
+
+            return userID;
+        }
+
+        private string GetUserRoleID()
+        {
+            string userRoleID = Login._UserRoleID;
+
+            return userRoleID;
         }
     }
 }

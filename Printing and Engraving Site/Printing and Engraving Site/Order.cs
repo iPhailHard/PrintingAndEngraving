@@ -14,6 +14,12 @@ namespace Printing_and_Engraving_Site
     
     public partial class Order
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Order()
+        {
+            this.Checkouts = new HashSet<Checkout>();
+        }
+    
         public int OrderID { get; set; }
         public int UserID { get; set; }
         public int ItemID { get; set; }
@@ -22,8 +28,13 @@ namespace Printing_and_Engraving_Site
         public Nullable<bool> IsCOD { get; set; }
         public string OrderNote { get; set; }
         public Nullable<System.DateTime> OrderDate { get; set; }
+        public string CustomEngravingMessage { get; set; }
+        public Nullable<int> ItemQuantity { get; set; }
+        public bool IsOrderComplete { get; set; }
     
         public virtual Item Item { get; set; }
         public virtual User User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Checkout> Checkouts { get; set; }
     }
 }
