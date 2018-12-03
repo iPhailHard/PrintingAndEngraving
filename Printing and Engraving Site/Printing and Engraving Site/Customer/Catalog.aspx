@@ -1,69 +1,366 @@
-﻿<%@ Page Title="Catalog" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Catalog.aspx.cs" Inherits="Printing_and_Engraving_Site.Catalog" %>
-
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2 style="color:cornflowerblue"><%: Title %>.</h2>
+﻿
     <h3>Check out some of our services!</h3>
     <p>These examples are just some of the items with example services we are offering to you! Proceed to our <a href="Services.aspx">Services Page</a> to see what we can do for you!</p>
     <p>&nbsp;</p>
     <p>
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" DataSourceID="ItemsCatalog">
-            <Columns>
-                <asp:BoundField DataField="ItemCode" HeaderText="Item Code" SortExpression="ItemCode" />
-                <asp:BoundField DataField="ItemDescription" HeaderText="Item Description" SortExpression="ItemDescription" />
-                <asp:BoundField DataField="ItemName" HeaderText="Item Name" SortExpression="ItemName" />
-                <asp:BoundField DataField="ItemPrice" HeaderText="Item Price" SortExpression="ItemPrice" />
-                <asp:TemplateField>
-                    <ItemTemplate>
-                <asp:LinkButton runat ="server" ID="lbDetails" PostBackUrl="~/Customer/OrderDetails.aspx">Details</asp:LinkButton>
-                    </ItemTemplate>
-                        </asp:TemplateField>
-            </Columns>
-        </asp:GridView>
-        <asp:SqlDataSource ID="ItemsCatalog" runat="server" ConnectionString="Data Source=printingandengraving.database.windows.net;Initial Catalog=PrintingAndEngraving;User ID=bjaune;Password=ThisIsMyPassWord@AZURE1;MultipleActiveResultSets=True;Application Name=EntityFramework" ProviderName="System.Data.SqlClient" SelectCommand="SELECT [ItemCode], [ItemDescription], [ItemName], [CatalogImage], [ItemPrice] FROM [Items] Join [Images] on [Items].ItemID = [Images].ItemID ORDER BY [ItemCode], [ItemName]"></asp:SqlDataSource>
-    </p> <hr />
 
-    <br /><br /><p>Find something you like? Don't forget to <a href="Order.aspx">Order</a> it!</p>
-    
-
-<%--    <table>
+    <table  border="1">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image
+            </th>
+        </tr>
         <tr>
             <td>
+            Black Long Shirt
+            </td>
+            <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/blackLongshirt.jpg"> See Image </a>
+            </td>
 
-    <table>
+        </tr>
         <tr>
             <td>
-            <div>
-                <p>
-                    T-Shirts
-                </p>
-            </div>
-            </tr>
+            Black Shirt
+            </td>
+                    <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/blackShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            Blue Long Shirt
+            </td>
+                        <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/blueLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
                 <tr>
             <td>
-    <div>    
-    <p>
-            Trophies
-        </p>
-    </div>
-                </td>
-            </tr>
+            Blue Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/blueShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Brown Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/brownLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Brown Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/brownShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Green Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/greenLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Green Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/greenShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Grey Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/greyLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Grey Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/greyShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Orange Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/orangeLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Orange Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/orangeShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Purple Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/purpleLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Purple Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/purpleShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Red Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/redLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Red Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/redShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            White Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/whiteLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            White Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/whiteShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Yellow Long Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/yellowLongShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+                <tr>
+            <td>
+            Yellow Shirt
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/yellowShirt.jpg"> See Image </a>
+            </td>
+        </tr>
+        </table>
+                <br />
+                        <br />
+            <table  border="1">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image
+            </th>
+        </tr>
+                
         <tr>
             <td>
-   <div>
-    <p>
-            Plaques
-        </p>
-    </div>
-                </td>
-            </tr>
-    </table>
-                </td>
-            <td>
-                                                        <div class="jumbotron">
-           <p>Product displays here...</p>
-        </div>
+            Basketball
             </td>
-            </tr>
-        </table>--%>
+                        <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/basketballTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+ 
+                <tr>
+            <td>
+            Baseball
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/baseballTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
 
-</asp:Content>
+                <tr>
+            <td>
+            Golf
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/golfTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+
+
+                <tr>
+            <td>
+            Hockey
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/hockeyTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+
+                <tr>
+            <td>
+            Man
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/manTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+
+                <tr>
+            <td>
+            Soccer
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/soccerTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+
+                <tr>
+            <td>
+            Woman
+            </td>
+                                <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/womanTrophy.jpg"> See Image </a>
+            </td>
+        </tr>
+            </table>
+                <br />
+                        <br />
+            <table  border="1">
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Image
+            </th>
+        </tr>
+        <tr>
+            <td>
+            Plaque
+            </td>
+                        <td>
+                $19.99
+            </td>
+            <td>
+                <a src="img/plaque.jpg"> See Image </a>
+            </td>
+        </tr>
+    </table>

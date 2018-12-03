@@ -13,21 +13,12 @@ namespace Printing_and_Engraving_Site {
     public partial class Catalog {
         
         /// <summary>
-        /// GridView1 control.
+        /// lbDetails control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridView1;
-        
-        /// <summary>
-        /// ItemsCatalog control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.SqlDataSource ItemsCatalog;
+        protected global::System.Web.UI.WebControls.LinkButton lbDetails;
     }
 }
