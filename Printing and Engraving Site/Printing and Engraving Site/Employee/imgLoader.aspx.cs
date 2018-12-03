@@ -7,6 +7,10 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Data.SqlClient;
 using System.Configuration;
+using System.Web.Configuration;
+using System.Text;
+using System.Drawing.Imaging;
+using System.IO;
 
 namespace Printing_and_Engraving_Site.Employee
 {
@@ -15,10 +19,10 @@ namespace Printing_and_Engraving_Site.Employee
         protected void Page_Load(object sender, EventArgs e)
         {
 
+
             string id = "1";
-            byte[] bytes = (byte[])GetData("SELECT TOP (1) ImageID,CatalogImage,ItemID,ImageName FROM Images where ImageID =" + id).Rows[0]["Data"];
-            string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
-            imgTest.ImageUrl = "data:image/png;base64," + base64String;
+            GetData("SELECT ImageName, CatalogImage FROM Images where ImageID =" + id);
+
         }
 
         protected void FetchImage(object sender, EventArgs e)
@@ -27,23 +31,32 @@ namespace Printing_and_Engraving_Site.Employee
         }
 
 
-        private DataTable GetData(string query)
+        private void GetData(string query)
         {
             string constr = ConfigurationManager.ConnectionStrings["PrintingAndEngravingEntities"].ConnectionString;
             DataTable dt = new DataTable();
             using (SqlConnection con = new SqlConnection(constr))
             {
-                using (SqlCommand cmd = new SqlCommand(query))
+                SqlCommand cmd = new SqlCommand(query, con);
+                con.Open();
+                SqlDataReader sda = cmd.ExecuteReader();
+
+
+
+                sda.Read();
+                byte[] bytes = (byte[])sda["CatalogImage"];
+                string base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                //imgTest.ImageUrl = "data:image/png;base64," + base64String;
+
+                using (MemoryStream ms = new MemoryStream(bytes))
                 {
-                    using (SqlDataAdapter sda = new SqlDataAdapter())
-                    {
-                        cmd.CommandType = CommandType.Text;
-                        cmd.Connection = con;
-                        sda.SelectCommand = cmd;
-                        sda.Fill(dt);
-                    }
+                    this.imgTest.ImageUrl = "data:image/png;base64," + Convert.ToBase64String(ms.ToArray());
                 }
-                return dt;
+
+                sda.Close();
+                con.Close();
+
+
             }
         }
     }
