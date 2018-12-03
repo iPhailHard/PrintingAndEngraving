@@ -154,7 +154,6 @@
   <ItemGroup>
     <Content Include="Customer\UserControls\ucOrderConfirmation.ascx" />
     <Content Include="Customer\UserControls\ucOrderDetails.ascx" />
-    <Content Include="Employee\imgLoader.aspx" />
     <Content Include="Images\Catalog\baseballTrophy.jpg" />
     <Content Include="Images\Catalog\blackLongshirt.jpg" />
     <Content Include="Images\Catalog\blackShirt.jpg" />
@@ -285,13 +284,6 @@
       <DependentUpon>ucOrderDetails.ascx</DependentUpon>
     </Compile>
     <Compile Include="DataContracts\orderDetailsData.cs" />
-    <Compile Include="Employee\imgLoader.aspx.cs">
-      <DependentUpon>imgLoader.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Employee\imgLoader.aspx.designer.cs">
-      <DependentUpon>imgLoader.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Image.cs">
       <DependentUpon>PrintingAndEngraving.tt</DependentUpon>
     </Compile>
